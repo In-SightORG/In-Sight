@@ -4,12 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>In-Sight</title>
-      <link rel="icon" type="image/png" href="insight-logo.png" />
-    <style>
-      link[rel="icon"] {
-        border-radius: 50%;
-      }
-    </style>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/N9sjvgu.png" />
   <!-- Google Font Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
@@ -48,7 +43,7 @@
     header {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
       text-align: center;
-      padding: 30px 15px;
+      padding: 20px 15px 25px;
       border-bottom: 2px solid rgba(255,255,255,0.2);
       box-shadow: 0 4px 20px rgba(255,255,255,0.1);
       user-select: none;
@@ -59,23 +54,31 @@
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
-      width: 200%;
+      left: 0;
+      width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-      animation: shimmer 3s infinite;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.03) 25%,
+        rgba(255,255,255,0.05) 50%,
+        rgba(255,255,255,0.03) 75%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: gradientShimmer 4s linear infinite;
     }
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
+    @keyframes gradientShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
     header img {
-      width: 140px;
+      width: 100px;
       border-radius: 50%;
       filter:
         drop-shadow(0 0 8px #ccc)
         drop-shadow(0 0 15px #fff);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       transition: filter 0.4s ease, transform 0.4s ease;
       position: relative;
       z-index: 1;
@@ -89,7 +92,7 @@
     header h1 {
       margin: 0;
       font-weight: 600;
-      font-size: 2.6rem;
+      font-size: 2rem;
       color: #fff;
       text-shadow: 0 0 10px rgba(255,255,255,0.5);
       position: relative;
@@ -100,7 +103,8 @@
     /* Navigation */
     nav {
       background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-      padding: 15px 0;
+      padding: 20px 0;
+      margin-top: 15px;
       position: sticky;
       top: 0;
       z-index: 30;
@@ -109,45 +113,84 @@
       text-align: center;
       user-select: none;
       backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.03) 25%,
+        rgba(255,255,255,0.05) 50%,
+        rgba(255,255,255,0.03) 75%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: gradientShimmer 4s linear infinite;
     }
     nav a {
       color: #ddd;
-      margin: 0 25px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 1.1rem;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 8px;
+      font-size: 1rem;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
       transition: all 0.3s ease;
       cursor: pointer;
       position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1;
+      overflow: hidden;
     }
     nav a::before {
       content: '';
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #fff, rgba(255,255,255,0.5));
-      transition: width 0.3s ease;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.05) 25%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.05) 75%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: gradientShimmer 4s linear infinite;
+      z-index: -1;
     }
     nav a:hover {
       color: #fff;
-      text-shadow: 0 0 15px rgba(255,255,255,0.8);
-    }
-    nav a:hover::before {
-      width: 100%;
+      background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 6px 20px rgba(255,255,255,0.15);
+      transform: translateY(-2px);
     }
     nav a.active {
-      border-color: #fff;
+      background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+      border-color: rgba(255,255,255,0.5);
       color: #fff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.9);
+      box-shadow: 0 6px 25px rgba(255,255,255,0.2), 0 0 30px rgba(255,255,255,0.1);
     }
 
     /* Hero */
     .hero {
       padding: 120px 20px 160px;
+      margin-top: 60px;
       text-align: center;
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
       position: relative;
@@ -174,20 +217,22 @@
       font-size: 3.8rem;
       color: #fff;
       text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4);
-      animation: pulseGlow 3s infinite ease-in-out;
       margin: 0;
       position: relative;
       z-index: 1;
       letter-spacing: 2px;
+      animation: focusPulse 4s ease-in-out infinite;
     }
-    @keyframes pulseGlow {
+    @keyframes focusPulse {
       0%, 100% { 
-        text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4);
+        filter: blur(0px);
+        opacity: 1;
         transform: scale(1);
       }
       50% { 
-        text-shadow: 0 0 30px rgba(255,255,255,1), 0 0 60px rgba(255,255,255,0.6);
-        transform: scale(1.02);
+        filter: blur(3px);
+        opacity: 0.85;
+        transform: scale(0.98);
       }
     }
 
@@ -195,7 +240,7 @@
     .main-content {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px 80px;
+      padding: 60px 20px 80px;
       user-select: text;
     }
     section {
@@ -206,10 +251,12 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.05);
       opacity: 0;
       transform: translateY(60px);
-      transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
       margin-bottom: 60px;
       position: relative;
       backdrop-filter: blur(10px);
+      will-change: opacity, transform;
+      overflow: hidden;
     }
     section::before {
       content: '';
@@ -221,6 +268,25 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       opacity: 0;
       transition: opacity 0.5s ease;
+    }
+    section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.02) 25%,
+        rgba(255,255,255,0.04) 50%,
+        rgba(255,255,255,0.02) 75%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: gradientShimmer 4s linear infinite;
+      pointer-events: none;
     }
     section:hover::before {
       opacity: 1;
@@ -241,6 +307,8 @@
       font-size: 2.2rem;
       text-align: center;
       letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
     }
     section p {
       line-height: 1.8;
@@ -250,6 +318,8 @@
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     /* Team container */
@@ -484,7 +554,10 @@
     /* Responsive adjustments */
     @media (max-width: 840px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
+      }
+      header img {
+        width: 80px;
       }
       .hero h2 {
         font-size: 2.8rem;
@@ -500,9 +573,13 @@
         grid-template-columns: 1fr;
         gap: 30px;
       }
+      nav {
+        padding: 15px 10px;
+        gap: 10px;
+      }
       nav a {
-        margin: 0 12px;
-        font-size: 1rem;
+        font-size: 0.9rem;
+        padding: 10px 20px;
       }
       #go-up-btn {
         bottom: 25px;
@@ -518,7 +595,7 @@
 <div id="scroll-container">
   <div id="scroll-content">
     <header>
-      <img src="insight-logo.png" alt="In-Sight Logo" />
+      <img src="https://i.imgur.com/N9sjvgu.png" alt="In-Sight Logo" />
       <h1>In-Sight</h1>
     </header>
 
@@ -537,9 +614,10 @@
       <section id="about" class="section">
         <h2>About Us</h2>
         <p>
-          In-Sight is a forward-thinking organization focused on innovation,
-          collaboration, and empowerment. We support growth through community
-          leadership and impactful projects that shape the future.
+          In-Sight is a game development studio passionate about creating immersive gaming experiences. 
+          We develop innovative VR games and compete at the highest level with our team in VRML Orion Drift. 
+          From development to competitive play, we live and breathe gaming—pushing boundaries in virtual reality 
+          and bringing visions to life through interactive entertainment.
         </p>
       </section>
 
@@ -547,19 +625,19 @@
         <h2>Our Team</h2>
         <div class="team-container">
           <div class="member">
-            <img src="https://via.placeholder.com/300x300" alt="Member 1" />
-            <h3>Member Name 1</h3>
-            <p>Role / Title</p>
+            <img src="https://i.imgur.com/LPcRsh8.png" alt="Eye - Founder" />
+            <h3>Eye</h3>
+            <p>Founder</p>
           </div>
           <div class="member">
-            <img src="https://via.placeholder.com/300x300" alt="Member 2" />
-            <h3>Member Name 2</h3>
-            <p>Role / Title</p>
+            <img src="https://via.placeholder.com/300x300/1a1a1a/666?text=Unknown" alt="Member 2" />
+            <h3>Unknown</h3>
+            <p>None</p>
           </div>
           <div class="member">
-            <img src="https://via.placeholder.com/300x300" alt="Member 3" />
-            <h3>Member Name 3</h3>
-            <p>Role / Title</p>
+            <img src="https://via.placeholder.com/300x300/1a1a1a/666?text=Unknown" alt="Member 3" />
+            <h3>Unknown</h3>
+            <p>None</p>
           </div>
         </div>
       </section>
@@ -720,7 +798,7 @@
     });
   }
 
-  const opts = { root: null, threshold: 0.5 };
+  const opts = { root: null, threshold: 0.3 };
   const obs = new IntersectionObserver((ents) => {
     ents.forEach(ent => {
       const id = ent.target.id;
